@@ -6,6 +6,7 @@ function Post() {
   const [selectedText, setSelectedText] = useState("");
   const [position, setPosition] = useState(null);
   const [isOnMobile, setOnMobile] = useState(false);
+  const [placedPos, setPlacedPos] = useState("");
 
   useEffect(() => {
     setOnMobile(isMobileDevice());
@@ -22,10 +23,22 @@ function Post() {
       const rect = range.getBoundingClientRect();
 
       setSelectedText(text);
-      setPosition({
-        top: rect.top + window.scrollY - 50,
-        left: rect.left + window.scrollX + rect.width / 2,
-      });
+
+      if (rect.top < 60) {
+        setPlacedPos("bottom");
+
+        setPosition({
+          top: rect.bottom + window.scrollY + 15,
+          left: rect.left + window.scrollX + rect.width / 2,
+        });
+      } else {
+        setPlacedPos("top");
+
+        setPosition({
+          top: rect.top + window.scrollY - 50,
+          left: rect.left + window.scrollX + rect.width / 2,
+        });
+      }
     } else {
       setSelectedText("");
       setPosition(null);
@@ -52,7 +65,7 @@ function Post() {
 
   return (
     <article className="prose lg:prose-lg selection:text-primary-900 selection:bg-blue-100">
-      {selectedText && position && <ShareButton text={selectedText} position={position} />}
+      {selectedText && position && <ShareButton placedPos={placedPos} text={selectedText} position={position} />}
 
       <h1>The Future of Artificial Intelligence</h1>
 
