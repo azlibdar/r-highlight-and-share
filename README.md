@@ -9,3 +9,5 @@ When text is highlighted, a share button appears near the selection, providing a
 <br>
 
 ![image](https://github.com/azlibdar/r-highlight-and-share/assets/121456353/46a6bfdd-dc5d-4005-bddf-7cfaefbd46fa)
+
+![image](https://github.com/azlibdar/r-highlight-and-share/assets/121456353/9b95c2e8-d99e-42cb-b9fb-22291632f642)
